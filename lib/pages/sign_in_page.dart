@@ -9,97 +9,89 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      backgroundColor: Colors.grey[200],
+      body: Padding(
+        padding:
+            const EdgeInsets.only(left: 18.0, right: 18.0, bottom: 60, top: 60),
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(
-                top: 50.0,
-                left: 15.0,
-                right: 15.0,
-                bottom: 15.0,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    'Bem vindo ao SecEnade',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w600,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  'Bem vindo',
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+                FlatButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Cadastre-se',
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20.0),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.mail),
+                    labelText: 'Email',
+                    hintText: 'exemplo@gmail.com',
+                  ),
+                ),
+                SizedBox(height: 15.0),
+                TextField(
+                  obscureText: true,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.lock),
+                    labelText: 'Senha',
+                  ),
+                ),
+                SizedBox(height: 5.0),
+                Container(
+                  alignment: Alignment.centerRight,
+                  child: FlatButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Esqueceu a senha?',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
-                  FlatButton(
-                    onPressed: () {},
-                    child: Text('Cadastre-se'),
+                ),
+                SizedBox(height: 5.0),
+                FlatButton(
+                  color: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5),
+                    ),
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(15.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.mail),
-                  labelText: 'Email',
-                  hintText: 'Digite um email válido como @gmail.com',
+                  onPressed: () {},
+                  child: Text(
+                    'Entrar',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.0,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.lock),
-                  labelText: 'Senha',
-                  hintText: 'Digite sua senha',
-                ),
-              ),
-            ),
-            Container(
-              alignment: Alignment.centerRight,
-              child: FlatButton(
-                onPressed: () {},
-                child: Text(
-                  'Esqueceu sua senha?',
-                  style: TextStyle(color: Colors.blue[400], fontSize: 15),
-                ),
-              ),
+              ],
             ),
             SizedBox(height: 8.0),
-            Container(
-              width: 160,
-              height: 40,
-              child: FlatButton(
-                onPressed: () {},
-                color: Colors.blue[400],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(5),
-                  ),
-                ),
-                child: Text(
-                  'Entrar',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16.0,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Text('-or-'),
-            SizedBox(height: 10.0),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-              child: Container(
-                height: 45,
-                child: FlatButton(
+            Text('Or'),
+            SizedBox(height: 8.0),
+            Column(
+              children: <Widget>[
+                FlatButton(
                   onPressed: () {},
-                  color: Colors.blue[400],
+                  color: Colors.blue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(5),
@@ -123,17 +115,9 @@ class _SignInPageState extends State<SignInPage> {
                     ],
                   ),
                 ),
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 15.0),
-              child: Container(
-                height: 45,
-                child: FlatButton(
+                FlatButton(
                   onPressed: () {},
-                  color: Colors.blue[400],
+                  color: Colors.blue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(5),
@@ -157,7 +141,7 @@ class _SignInPageState extends State<SignInPage> {
                     ],
                   ),
                 ),
-              ),
+              ],
             ),
           ],
         ),
