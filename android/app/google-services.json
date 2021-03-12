@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "278854102718",
+    "project_id": "sec-enade",
+    "storage_bucket": "sec-enade.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278854102718:android:901b91cbb9e23a1f2778ef",
+        "android_client_info": {
+          "package_name": "com.example.sec_enade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278854102718-3gpftqksgtohj08ukgh39ls8edheo2p7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sec_enade",
+            "certificate_hash": "3bb8ec0f146614a51308ab7002242a0a2cd69686"
+          }
+        },
+        {
+          "client_id": "278854102718-v1268f0u84007u0um5vijmmp62mo86av.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi6L37F9s1jnlZNsOBzbNnAEv_b0RJQ0A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278854102718-v1268f0u84007u0um5vijmmp62mo86av.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:sec_enade/services/auth.dart';
 
-class SignInPage extends StatefulWidget {
-  @override
-  _SignInPageState createState() => _SignInPageState();
-}
+class SignInPage extends StatelessWidget {
+  const SignInPage({Key key, @required this.auth}) : super(key: key);
+  final AuthBase auth;
 
-class _SignInPageState extends State<SignInPage> {
+  //Método para entrar em modo Anônimo(Guest)
+  Future<void> _signInAnonymously() async {
+    try {
+      await auth.signInAnonymously();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,9 +81,9 @@ class _SignInPageState extends State<SignInPage> {
                       Radius.circular(5),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: _signInAnonymously,
                   child: Text(
-                    'Entrar',
+                    'Entrar anônimo',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16.0,
