@@ -15,6 +15,15 @@ class SignInPage extends StatelessWidget {
     }
   }
 
+  //Método para entrar com o Google
+  Future<void> _signInWithGoogle() async {
+    try {
+      await auth.signInWithGoogle();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,7 +117,7 @@ class SignInPage extends StatelessWidget {
                 children: <Widget>[
                   FlatButton(
                     height: 40.0,
-                    onPressed: () {},
+                    onPressed: _signInWithGoogle,
                     color: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(

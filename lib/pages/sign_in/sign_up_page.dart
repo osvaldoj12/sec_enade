@@ -52,7 +52,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
+                  Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => SignInPage(
                         auth: Auth(),
