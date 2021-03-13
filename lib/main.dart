@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sec_enade/pages/landing_page.dart';
-import 'package:sec_enade/services/auth.dart';
+import 'package:sec_enade/auth/auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

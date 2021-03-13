@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sec_enade/pages/home_page.dart';
 import 'package:sec_enade/pages/sign_in/sign_in_page.dart';
-import 'package:sec_enade/services/auth.dart';
+import 'package:sec_enade/auth/auth.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key key, @required this.auth}) : super(key: key);
