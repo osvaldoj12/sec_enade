@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sec_enade/auth/auth.dart';
-import 'package:sec_enade/pages/sign_in/sign_in_page.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key key, @required this.auth}) : super(key: key);
@@ -10,10 +9,6 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController _emailController = TextEditingController();
     final TextEditingController _passwordController = TextEditingController();
-    void _submit() async {
-      await auth.signInWithEmailAndPassword(
-          _emailController.text, _passwordController.text);
-    }
 
     return Scaffold(
       appBar: AppBar(
@@ -63,14 +58,10 @@ class SignUpPage extends StatelessWidget {
                     Radius.circular(5),
                   ),
                 ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => SignInPage(
-                        auth: Auth(),
-                      ),
-                    ),
-                  );
+                onPressed: () async {
+                  Navigator.of(context).pop();
+                  await auth.createUserWithEmailAndPassword(
+                      _emailController.text, _passwordController.text);
                 },
                 child: Text(
                   "Cadastrar",

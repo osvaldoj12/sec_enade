@@ -7,13 +7,13 @@ class SignInPage extends StatelessWidget {
   final AuthBase auth;
 
   //Método para entrar em modo Anônimo(Guest)
-  Future<void> _signInAnonymously() async {
-    try {
-      await auth.signInAnonymously();
-    } catch (e) {
-      print(e.toString());
-    }
-  }
+  // Future<void> _signInAnonymously() async {
+  //   try {
+  //     await auth.signInAnonymously();
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
 
   //Método para entrar com o Google
   Future<void> _signInWithGoogle() async {
@@ -35,6 +35,9 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _emailController = TextEditingController();
+    final TextEditingController _passwordController = TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: Padding(
@@ -53,7 +56,7 @@ class SignInPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => SignUpPage(),
+                          builder: (context) => SignUpPage(auth: auth),
                           fullscreenDialog: true,
                         ),
                       );
@@ -69,6 +72,7 @@ class SignInPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   TextField(
+                    controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.mail),
@@ -79,6 +83,7 @@ class SignInPage extends StatelessWidget {
                   SizedBox(height: 15.0),
                   TextField(
                     obscureText: true,
+                    controller: _passwordController,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock),
@@ -108,7 +113,10 @@ class SignInPage extends StatelessWidget {
                         Radius.circular(5),
                       ),
                     ),
-                    onPressed: _signInAnonymously,
+                    onPressed: () async {
+                      await auth.signInWithEmailAndPassword(
+                          _emailController.text, _passwordController.text);
+                    },
                     child: Text(
                       'Entrar',
                       style: TextStyle(
