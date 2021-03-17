@@ -24,6 +24,15 @@ class SignInPage extends StatelessWidget {
     }
   }
 
+  //Método para entrar com o Email e Senha
+  Future<void> _signInWithEmailAndPassword() async {
+    try {
+      await auth.signInWithEmailAndPassword();
+    } catch (error) {
+      print(error.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,9 +108,9 @@ class SignInPage extends StatelessWidget {
                         Radius.circular(5),
                       ),
                     ),
-                    onPressed: _signInAnonymously,
+                    onPressed: _signInWithEmailAndPassword,
                     child: Text(
-                      'Entrar anônimo',
+                      'Entrar',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16.0,
