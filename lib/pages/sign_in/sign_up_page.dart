@@ -3,8 +3,18 @@ import 'package:sec_enade/auth/auth.dart';
 import 'package:sec_enade/pages/sign_in/sign_in_page.dart';
 
 class SignUpPage extends StatelessWidget {
+  const SignUpPage({Key key, @required this.auth}) : super(key: key);
+  final AuthBase auth;
+
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _emailController = TextEditingController();
+    final TextEditingController _passwordController = TextEditingController();
+    void _submit() async {
+      await auth.signInWithEmailAndPassword(
+          _emailController.text, _passwordController.text);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Cadastro"),
@@ -26,6 +36,7 @@ class SignUpPage extends StatelessWidget {
               ),
               SizedBox(height: 15.0),
               TextFormField(
+                controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.mail),
@@ -35,6 +46,7 @@ class SignUpPage extends StatelessWidget {
               ),
               SizedBox(height: 15.0),
               TextFormField(
+                controller: _passwordController,
                 obscureText: true,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
