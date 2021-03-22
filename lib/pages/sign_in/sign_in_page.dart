@@ -6,15 +6,6 @@ class SignInPage extends StatelessWidget {
   const SignInPage({Key key, @required this.auth}) : super(key: key);
   final AuthBase auth;
 
-  //Método para entrar em modo Anônimo(Guest)
-  // Future<void> _signInAnonymously() async {
-  //   try {
-  //     await auth.signInAnonymously();
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  // }
-
   //Método para entrar com o Google
   Future<void> _signInWithGoogle() async {
     try {
@@ -24,14 +15,13 @@ class SignInPage extends StatelessWidget {
     }
   }
 
-  /* Método para entrar com o Email e Senha
-  Future<void> _signInWithEmailAndPassword() async {
+  Future<void> _signInWithFacebook() async {
     try {
-      await auth.signInWithEmailAndPassword();
-    } catch (error) {
-      print(error.toString());
+      await auth.signInWithFacebook();
+    } catch (e) {
+      print(e.toString());
     }
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +151,7 @@ class SignInPage extends StatelessWidget {
                   ),
                   FlatButton(
                     height: 40.0,
-                    onPressed: () {},
+                    onPressed: _signInWithFacebook,
                     color: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(

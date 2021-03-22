@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sec Enade</string>
+    <string name="facebook_app_id">455879109028099</string> 
+    <string name="fb_login_protocol_scheme">fb455879109028099</string>
+</resources>
