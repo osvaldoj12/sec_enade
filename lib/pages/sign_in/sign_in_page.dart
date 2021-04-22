@@ -118,7 +118,7 @@ class SignInPage extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 8.0),
-              Text('Or'),
+              Text('Ou'),
               SizedBox(height: 8.0),
               Column(
                 children: <Widget>[
