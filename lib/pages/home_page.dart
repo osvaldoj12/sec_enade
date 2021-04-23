@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sec_enade/auth/auth.dart';
 import 'package:sec_enade/pages/question_page.dart';
-// import 'package:sec_enade/pages/question_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key, @required this.auth}) : super(key: key);

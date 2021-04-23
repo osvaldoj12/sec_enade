@@ -1,4 +1,4 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -7,64 +7,67 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
+  CollectionReference question =
+      FirebaseFirestore.instance.collection('question');
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('ENADE 2018'),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
+    return StreamBuilder(
+      stream: question.doc('1b4i8wfxlmCHg11UsaNe').snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return Text("Carregando");
+        }
+        var questionDocument = snapshot.data;
+        return Scaffold(
+          appBar: AppBar(
+            title: Text("PRA ENADE 2018"),
+          ),
+          body: SingleChildScrollView(
+            padding: EdgeInsets.all(10),
             child: Column(
               children: <Widget>[
                 Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                  ),
-                  color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(10)),
                   child: Container(
-                    padding: EdgeInsets.all(15),
-                    child: Column(
-                      children: <Widget>[
-                        Text('Lorem ipsum' * 50),
-                      ],
-                    ),
+                    padding: EdgeInsets.all(10),
+                    child: Text(questionDocument["Questao"]),
                   ),
                 ),
-                SizedBox(height: 15),
-                Column(
-                  children: <Widget>[
-                    buildRow(text: "A"),
-                    SizedBox(height: 10),
-                    buildRow(text: "B"),
-                    SizedBox(height: 10),
-                    buildRow(text: "C"),
-                    SizedBox(height: 10),
-                    buildRow(text: "D"),
-                    SizedBox(height: 10),
-                    buildRow(text: "E"),
-                  ],
+                SizedBox(height: 25),
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  child: ListView(
+                    children: <Widget>[
+                      ListTile(
+                        leading: Text("A"),
+                        subtitle: Text(questionDocument["Alternativa_1"]),
+                      ),
+                      ListTile(
+                        leading: Text("B"),
+                        subtitle: Text(questionDocument["Alternativa_2"]),
+                      ),
+                      ListTile(
+                        leading: Text("C"),
+                        subtitle: Text(questionDocument["Alternativa_3"]),
+                      ),
+                      ListTile(
+                        leading: Text("D"),
+                        subtitle: Text(questionDocument["Alternativa_4"]),
+                      ),
+                      ListTile(
+                        leading: Text("E"),
+                        title: Text(questionDocument["Alternativa_5"]),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildRow({String text}) {
-    return Row(
-      children: <Widget>[
-        Text(text),
-        SizedBox(width: 15),
-        Expanded(child: Text('Lorem ipsum' * 10)),
-      ],
+        );
+      },
     );
   }
 }
