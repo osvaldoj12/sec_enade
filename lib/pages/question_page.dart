@@ -58,7 +58,7 @@ class _QuestionPageState extends State<QuestionPage> {
                       ),
                       ListTile(
                         leading: Text("E"),
-                        title: Text(questionDocument["Alternativa_5"]),
+                        subtitle: Text(questionDocument["Alternativa_5"]),
                       ),
                     ],
                   ),
