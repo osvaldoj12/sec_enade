@@ -1,37 +1,58 @@
 class QuestionModel {
-  final int id;
-  final String course;
-  final String area;
-  final String description;
-  final List<String> alternatives;
-  final List<String> img;
+  int codigo;
+  String curso;
+  String area;
+  String questao;
+  String alternativa1;
+  String alternativa2;
+  String alternativa3;
+  String alternativa4;
+  String alternativa5;
+  String alternativaCorreta;
+  String bancoImagem;
 
-  QuestionModel({
-    this.id,
-    this.course,
-    this.area,
-    this.description,
-    this.alternatives,
-    this.img,
-  });
+  QuestionModel(
+      {this.codigo,
+      this.curso,
+      this.area,
+      this.questao,
+      this.alternativa1,
+      this.alternativa2,
+      this.alternativa3,
+      this.alternativa4,
+      this.alternativa5,
+      this.alternativaCorreta,
+      this.bancoImagem});
 
-  factory QuestionModel.fromMap(Map<String, dynamic> json) => QuestionModel(
-        id: json["id"],
-        course: json["course"],
-        area: json["area"],
-        description: json["description"],
-        alternatives: List<String>.from(json["alternatives"].map((x) => x)),
-        img: List<String>.from(json["img"].map((x) => x)),
-      );
+  QuestionModel.fromJson(Map<String, dynamic> json) {
+    codigo = json['Codigo'];
+    curso = json['Curso'];
+    area = json['Area'];
+    questao = json['Questao'];
+    alternativa1 = json['Alternativa_1'];
+    alternativa2 = json['Alternativa_2'];
+    alternativa3 = json['Alternativa_3'];
+    alternativa4 = json['Alternativa_4'];
+    alternativa5 = json['Alternativa _5'];
+    alternativaCorreta = json['Alternativa_correta'];
+    bancoImagem = json['Banco_imagem'];
+  }
 
-  Map<String, dynamic> toMap() => {
-        "id": id,
-        "course": course,
-        "area": area,
-        "description": description,
-        "alternatives": List<dynamic>.from(alternatives.map((x) => x)),
-        "img": List<dynamic>.from(img.map((x) => x)),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['Codigo'] = this.codigo;
+    data['Curso'] = this.curso;
+    data['Area'] = this.area;
+    data['Questao'] = this.questao;
+    data['Alternativa_1'] = this.alternativa1;
+    data['Alternativa_2'] = this.alternativa2;
+    data['Alternativa_3'] = this.alternativa3;
+    data['Alternativa_4'] = this.alternativa4;
+    data['Alternativa _5'] = this.alternativa5;
+    data['Alternativa_correta'] = this.alternativaCorreta;
+    data['Banco_imagem'] = this.bancoImagem;
+    return data;
+  }
 }
 
 const List sample_data = [
