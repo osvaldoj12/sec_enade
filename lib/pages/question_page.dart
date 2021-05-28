@@ -22,6 +22,18 @@ class _QuestionPageState extends State<QuestionPage> {
         return Scaffold(
           appBar: AppBar(
             title: Text("PRA ENADE 2018"),
+            actions: [
+          FlatButton(
+            onPressed: _signOut,
+            child: Text(
+              'Sair',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+              ),
+            ),
+          ),
+        ],
           ),
           body: SingleChildScrollView(
             padding: EdgeInsets.all(10),
@@ -58,7 +70,7 @@ class _QuestionPageState extends State<QuestionPage> {
                       ),
                       ListTile(
                         leading: Text("E"),
-                        title: Text(questionDocument["Alternativa_5"]),
+                        subtitle: Text(questionDocument["Alternativa_5"]),
                       ),
                     ],
                   ),
