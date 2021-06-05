@@ -15,6 +15,7 @@ class SignInPage extends StatelessWidget {
     }
   }
 
+  //Método para entrar com o Facebook
   Future<void> _signInWithFacebook() async {
     try {
       await auth.signInWithFacebook();
@@ -23,8 +24,10 @@ class SignInPage extends StatelessWidget {
     }
   }
 
+  //Método para entrar com Email e Senha
   @override
   Widget build(BuildContext context) {
+    //Controladores
     final TextEditingController _emailController = TextEditingController();
     final TextEditingController _passwordController = TextEditingController();
 
