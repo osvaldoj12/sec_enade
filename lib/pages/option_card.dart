@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 class Option5 extends StatelessWidget {
   const Option5({
     Key key,
+    this.text,
+    this.index,
+    this.press,
   }) : super(key: key);
+  final String text;
+  final int index;
+  final VoidCallback press;
 
   @override
   Widget build(BuildContext context) {

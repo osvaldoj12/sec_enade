@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sec_enade/pages/question_card.dart';
+import 'package:sec_enade/controllers/question_controllers.dart';
 
 class QuestionPage extends StatefulWidget {
   @override
@@ -13,6 +15,7 @@ class _QuestionPageState extends State<QuestionPage> {
 
   @override
   Widget build(BuildContext context) {
+    QuestionControllers _questionController = Get.put(QuestionControllers());
     return Scaffold(
       appBar: AppBar(
         title: Text("PRA ENADE 2018"),
@@ -25,29 +28,38 @@ class _QuestionPageState extends State<QuestionPage> {
         ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          children: <Widget>[
-            Text.rich(
-              TextSpan(
-                text: "Questão 1",
-                style: Theme.of(context).textTheme.headline4.copyWith(
-                      color: Colors.blue[300],
-                    ),
-                children: [
+        child: SafeArea(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Text.rich(
                   TextSpan(
-                      text: "/10",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline5
-                          .copyWith(color: Colors.blue[200]))
-                ],
+                    text: "Questão 1",
+                    style: Theme.of(context).textTheme.headline4.copyWith(
+                          color: Colors.blue[300],
+                        ),
+                    children: [
+                      TextSpan(
+                          text: "/10",
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline5
+                              .copyWith(color: Colors.blue[200]))
+                    ],
+                  ),
+                ),
               ),
-            ),
-            Divider(thickness: 1.5),
-            SizedBox(height: 20),
-            Questions(),
-          ],
+              Divider(thickness: 1.5),
+              SizedBox(height: 20),
+              Expanded(
+                  flex: 2,
+                  child: PageView.builder(
+                      itemCount: _questionController.questions.length,
+                      itemBuilder: (context, index) => Questions(
+                          question: _questionController.questions[index]))),
+            ],
+          ),
         ),
       ),
     );
